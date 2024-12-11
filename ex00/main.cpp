@@ -6,7 +6,7 @@
 /*   By: ysanchez <ysanchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 21:08:42 by ysanchez          #+#    #+#             */
-/*   Updated: 2024/12/09 22:03:21 by ysanchez         ###   ########.fr       */
+/*   Updated: 2024/12/11 18:37:03 by ysanchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void print_vector(std::vector<int> v)
 	if (v.size() > 0)
 	{
 		std::cout << "V: ";
-		for (unsigned long i = 0; i < v.size(); i++)
+		for (size_t i = 0; i < v.size(); i++)
 		{
 			std::cout << v.at(i);
 			if (i < v.size() -1)

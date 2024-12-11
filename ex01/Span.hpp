@@ -5,7 +5,6 @@
 #include <vector>
 #include <exception>
 #include <algorithm>
-#include <random>
 
 class Span
 {
@@ -21,6 +20,7 @@ public:
 
 	Span& operator=(const Span& src);
 	void	addNumber(int num);
+	void	addManyNum(std::vector<int> src);
 	unsigned int		shortestSpan() const;
 	unsigned int		longestSpan() const;
 

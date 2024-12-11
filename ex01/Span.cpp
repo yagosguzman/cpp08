@@ -6,7 +6,7 @@
 /*   By: ysanchez <ysanchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 19:40:21 by ysanchez          #+#    #+#             */
-/*   Updated: 2024/12/10 21:34:06 by ysanchez         ###   ########.fr       */
+/*   Updated: 2024/12/11 18:36:34 by ysanchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ Span& Span::operator=(const Span& src)
 	{
 		std::cout << "Copy assignment operator called" << std::endl;
 		_size = src._size;
-		for (unsigned int i = 0; i < _size; i++)
+		for (size_t i = 0; i < _cont.size(); i++)
 		{
 			_cont[i] = src._cont[i];
 		}
@@ -60,12 +60,32 @@ unsigned int Span::shortestSpan() const
 {
 	if (_cont.size() <= 1)
 		throw ImpossibleException();
+
+	std::vector<int> sorted = _cont;
+	std::sort(sorted.begin(), sorted.end());
+
+	int minDiff = sorted[1] - sorted[0];
+
+	for (size_t i = 1; i < sorted.size() - 1; i++)
+	{
+		int diff = sorted[i + 1] - sorted[i];
+		if (diff < minDiff)
+			minDiff = diff;
+	}
+	return static_cast<unsigned int>(minDiff);
 }
 
 unsigned int Span::longestSpan() const
 {
 	if (_cont.size() <= 1)
 		throw ImpossibleException();
+
+	int min = *std::min_element(_cont.begin(), _cont.end());
+	int max = *std::max_element(_cont.begin(), _cont.end());
+	
+	int maxDiff = max - min;
+	
+	return static_cast<unsigned int>(maxDiff);
 }
 
 const char* Span::FullSpanException::what() const throw()
