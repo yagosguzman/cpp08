@@ -20,7 +20,7 @@ public:
 
 	Span& operator=(const Span& src);
 	void	addNumber(int num);
-	void	addManyNum(std::vector<int> src);
+	void	addManyNum(std::vector<int>::iterator begin, std::vector<int>::iterator end);
 	unsigned int		shortestSpan() const;
 	unsigned int		longestSpan() const;
 

@@ -6,7 +6,7 @@
 /*   By: ysanchez <ysanchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 19:40:21 by ysanchez          #+#    #+#             */
-/*   Updated: 2024/12/11 18:36:34 by ysanchez         ###   ########.fr       */
+/*   Updated: 2024/12/12 20:00:54 by ysanchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,18 @@ void	Span::addNumber(int num)
 	if (_cont.size() >= _size)
 		throw FullSpanException();
 	_cont.push_back(num);
+}
+
+void	Span::addManyNum(std::vector<int>::iterator begin, std::vector<int>::iterator end)
+{	
+	int i = 0;
+	for (std::vector<int>::iterator iter = begin; iter != end; iter++)
+	{
+		if (_cont.size() >= _size)
+			std::cout << "Limit reached, " << i << " elements added" << std::endl;
+		addNumber(*iter);
+		i++;
+	}
 }
 
 unsigned int Span::shortestSpan() const
