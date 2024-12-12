@@ -24,6 +24,7 @@ public:
 	unsigned int		shortestSpan() const;
 	unsigned int		longestSpan() const;
 
+
 	class FullSpanException : public std::exception {
 		public:
 			virtual const char* what() const throw();
@@ -33,6 +34,8 @@ public:
 		public:
 			virtual const char* what() const throw();
 	};
+
+	void	showContent(void);
 };
 
 #endif

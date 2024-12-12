@@ -6,7 +6,7 @@
 /*   By: ysanchez <ysanchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 19:40:21 by ysanchez          #+#    #+#             */
-/*   Updated: 2024/12/12 20:00:54 by ysanchez         ###   ########.fr       */
+/*   Updated: 2024/12/12 20:53:53 by ysanchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	Span::addManyNum(std::vector<int>::iterator begin, std::vector<int>::iterat
 
 unsigned int Span::shortestSpan() const
 {
-	if (_cont.size() <= 1)
+	if (!_cont.size() ||  _cont.size() == 1)
 		throw ImpossibleException();
 
 	std::vector<int> sorted = _cont;
@@ -108,4 +108,23 @@ const char* Span::FullSpanException::what() const throw()
 const char* Span::ImpossibleException::what() const throw()
 {
 	return "ERROR!\nImpossible to calculate the distance because of the number of elements";
+}
+
+void Span::showContent(void)
+{
+	if (_cont.size() == 0)
+		std::cout << "Vector is empty" << std::endl;
+
+	else if (_cont.size() > 0)
+	{
+		std::cout << "V: ";
+		for (size_t i = 0; i < _cont.size(); i++)
+		{
+			std::cout << _cont.at(i);
+			if (i < _cont.size() -1)
+				std::cout << ", ";
+			else
+				std::cout << "." << std::endl;
+		}
+	}
 }
